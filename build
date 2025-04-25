@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+cd "$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
+
+case "${1:-}" in
+  ui)
+    cd frontend
+    pnpm install
+    pnpm build
+    ;;
+  server)
+    podman build -t schlawg/wspad .
+    ;;
+  "")
+    "$0" ui
+    "$0" server
+    ;;
+  image)
+    "$0" server
+    podman image prune -f
+    ;;
+  hub)
+    "$0" image
+    podman push schlawg/wspad docker.io/schlawg/wspad
+    ;;
+  *)
+    echo "Usage: $0 {""|ui|server|image|hub}" >&2
+    exit 1
+    ;;
+esac

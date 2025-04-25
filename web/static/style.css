@@ -1,0 +1,12 @@
+.box {
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: stretch;
+  height: fit-content(100%);
+  min-height: 99vh;
+}
+#text {
+  flex: 1 0 100%;
+  resize: none;
+}

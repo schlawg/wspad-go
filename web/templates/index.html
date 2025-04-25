@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link href="/static/style.css" rel="stylesheet"/>
+  </head>
+  <body>
+    <h1>Existing Pads</h1>
+    <ul>
+    {{range .Pads}}
+        <li><a href="/{{.}}">{{.}}</a></li>
+    {{else}}
+        <li>No pads found.</li>
+    {{end}}
+    </ul>
+    <br>
+    <!-- Add form for creating new pads later if needed -->
+    <!-- <form action="/create" method="post"> -->
+    <!--   <input name="padName" type="text" placeholder="new pad name"/> -->
+    <!--   <input type="submit" value="Create"> -->
+    <!-- </form> -->
+  </body>
+</html>
